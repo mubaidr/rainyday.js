@@ -45,14 +45,14 @@ function RainyDay(config) {
 		blur: 10,
 		resize: true,
 		gravity: true,
-		intensity: 50,
+		intensity: 20,
 		collisions: true,
 		threshold: 3,
 		angle: Math.PI / 2,
 		angleVariance: 0,
 		scaledownFactor: 5,
 		speed: 20,
-		reflectionSize: 50 // TODO not in pixels
+		reflectionSize: 10
 	};
 	this.drops = [];
 
@@ -274,6 +274,16 @@ function RainyDay(config) {
 			this.conf.speed = s;
 		}
 	};
+	
+	this.reflection = function(s) {
+		if (s <= 0) {
+			this.conf.reflectionSize = 1;
+		} else if (s > 100) {
+			this.conf.reflectionSize = 100;
+		} else {
+			this.conf.reflectionSize = s;
+		}
+	};
 
 	this.pFrame = function() {
 		window.requestAnimationFrame(this.pAnimation.bind(this));
@@ -334,12 +344,13 @@ function RainyDay(config) {
 	this.pReflection = function(drop) {
 		var dtx = drop.x * this.width;
 		var dty = drop.y * this.height;
-		var dx = drop.x * this.conf.reflectionSize;
-		var dy = drop.y * this.conf.reflectionSize;
-		var sx = Math.max((dx - this.conf.reflectionSize) / this.conf.scaledownFactor, 0);
-		var sy = Math.max((dy - this.conf.reflectionSize) / this.conf.scaledownFactor, 0);
-		var sw = this.pPositiveMin(this.conf.reflectionSize * 2 / this.conf.scaledownFactor, this.reflected.width - sx);
-		var sh = this.pPositiveMin(this.conf.reflectionSize * 2 / this.conf.scaledownFactor, this.reflected.height - sy);
+		var dx = drop.x * this.reflected.width;
+		var dy = drop.y * this.reflected.height;
+		var f = this.conf.reflectionSize / 100;
+		var sx = Math.max(dx - this.reflected.width * f, 0);
+		var sy = Math.max(dy - this.reflected.height * f, 0);
+		var sw = this.pPositiveMin(dx + this.reflected.width * f, this.reflected.width);
+		var sh = this.pPositiveMin(dy + this.reflected.height * f, this.reflected.height);
 		this.context.drawImage(this.reflected, sx, sy, sw, sh, Math.max(dtx - drop.r, 0), Math.max(dty - drop.r, 0), drop.r * 2, drop.r * 2);
 	};
 
@@ -430,7 +441,7 @@ function RainyDay(config) {
 		this.reflected = document.createElement('canvas');
 		this.reflected.width = this.width / this.conf.scaledownFactor;
 		this.reflected.height = this.height / this.conf.scaledownFactor;
-		this.reflected.getContext('2d').drawImage(this.image, 0, 0, this.width, this.height, 0, 0, this.reflected.width, this.reflected.height);
+		this.reflected.getContext('2d').drawImage(this.image, 0, 0, this.reflected.width, this.reflected.height);
 	};
 
 	this.pStackBlurCanvasRGB = function(width, height, radius) {
@@ -718,12 +729,14 @@ function RainyDay(config) {
 		};
 
 		this.clear = function(context, force, width, height) {
-			context.clearRect(this.x - this.r - 1, this.y - this.r - 2, 2 * this.r + 2, 2 * this.r + 2);
+			var dx = this.x * width - this.r;
+			var dy = this.y * height - this.r;
+			context.clearRect(dx - 1, dy - 2, 2 * this.r + 2, 2 * this.r + 2);
 			if (force) {
 				this.terminate = true;
 				return true;
 			}
-			if ((this.y - this.r > height) || (this.x - this.r > width) || (this.x + this.r < 0)) {
+			if ((dy > height) || (dx > width) || (dx < 0)) {
 				// over edge so stop this drop
 				return true;
 			}

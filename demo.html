@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>rainyday.js demo #1</title>
+        <title>rainyday.js demo page</title>
         <style media="screen">
             body {
                 overflow: hidden;
@@ -90,23 +90,24 @@
     <body onload="run(0)">
         <div class="controls">
             Demo: RainyDay.js<br/><hr/>
-            <a href="javascript:rd.start();" title="Start animation"><i class="fa fa-play"></i></a>
-            <a href="javascript:rd.pause();" title="Pause animation"><i class="fa fa-pause"></i></a>
-            <a href="javascript:rd.stop();" title="Stop animation"><i class="fa fa-stop"></i></a>
-            <a href="javascript:rd.rect(30, 30, window.innerWidth / 2, window.innerHeight / 2);" title="Resize to element"><i class="fa fa-compress"></i></a>
-            <a href="javascript:rd.cover();" title="Set as background"><i class="fa fa-expand"></i></a>
+            <a href="#" onclick="rd.start(); return false;" title="Start animation"><i class="fa fa-play"></i></a>
+            <a href="#" onclick="rd.pause(); return false;" title="Pause animation"><i class="fa fa-pause"></i></a>
+            <a href="#" onclick="rd.stop(); return false;" title="Stop animation"><i class="fa fa-stop"></i></a>
+            <a href="#" onclick="rd.rect(30, 30, window.innerWidth / 2, window.innerHeight / 2); return false;" title="Resize to element"><i class="fa fa-compress"></i></a>
+            <a href="#" onclick="rd.cover(); return false;" title="Set as background"><i class="fa fa-expand"></i></a>
             <br/><hr/>
-            <a class="amini" href="javascript:run(0);" title="Image 1"><img src="http://maroslaw.github.io/rainyday.js/img/dm1.jpg" class="mini" /></a>
-            <a class="amini" href="javascript:run(1);" title="Image 2"><img src="http://maroslaw.github.io/rainyday.js/img/dm2.jpg" class="mini" /></a>
-            <a class="amini" href="javascript:run(2);" title="Image 3"><img src="http://maroslaw.github.io/rainyday.js/img/dm3.jpg" class="mini" /></a>
-            <a class="amini" href="javascript:run(3);" title="Image 4"><img src="http://maroslaw.github.io/rainyday.js/img/dm4.jpg" class="mini" /></a>
+            <a class="amini" href="#" onclick="run(0); return false;" title="Image 1"><img src="http://maroslaw.github.io/rainyday.js/img/dm1.jpg" class="mini" /></a>
+            <a class="amini" href="#" onclick="run(1); return false;" title="Image 2"><img src="http://maroslaw.github.io/rainyday.js/img/dm2.jpg" class="mini" /></a>
+            <a class="amini" href="#" onclick="run(2); return false;" title="Image 3"><img src="http://maroslaw.github.io/rainyday.js/img/dm3.jpg" class="mini" /></a>
+            <a class="amini" href="#" onclick="run(3); return false;" title="Image 4"><img src="http://maroslaw.github.io/rainyday.js/img/dm4.jpg" class="mini" /></a>
             <br/><hr/>
-            Intensity:<br/><input id="pintensity" type="range" min="0" max="100" value="50" onchange="javascript:rd.intensity(this.value);" /><br/>
-            Angle:<br/><input id="pangle" type="range" min="0" max="100" value="40" onchange="javascript:rd.angle(this.value);" /><br/>
-            Speed:<br/><input id="pgravity" type="range" min="0" max="100" value="40" onchange="javascript:rd.speed(this.value);" /><br/>
+            Intensity:<br/><input id="pintensity" type="range" min="0" max="100" value="20" onchange="rd.intensity(this.value);" /><br/>
+            Angle:<br/><input id="pangle" type="range" min="0" max="100" value="40" onchange="rd.angle(this.value);" /><br/>
+            Speed:<br/><input id="pgravity" type="range" min="0" max="100" value="40" onchange="rd.speed(this.value);" /><br/>
+            Reflection size:<br/><input id="preflection" type="range" min="0" max="100" value="20" onchange="rd.reflection(this.value);" /><br/>
             <hr/>
-            <input type="checkbox" checked onchange="javascript:rd.gravity(this.checked);">gravity</input><br/>
-            <input type="checkbox" checked onchange="javascript:rd.collisions(this.checked);">collisions</input>
+            <input type="checkbox" checked onchange="rd.gravity(this.checked);">gravity</input><br/>
+            <input type="checkbox" checked onchange="rd.collisions(this.checked);">collisions</input>
             <br/><hr/>Event queue<br/>
             <progress id="events" value="0" max="100"></progress>
         </div>
