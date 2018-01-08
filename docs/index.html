@@ -6,9 +6,9 @@
     <title>RainyDay.js : rendering raindrops with javascript</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="rendering raindrops with javascript">
-    <link rel="shortcut icon" href="favicon.ico">
-    <link rel="stylesheet" href="./css/bootstrap.css">
-    <link rel="stylesheet" href="./css/site.css">
+    <link href="favicon.ico" rel="shortcut icon">
+    <link href="./css/bootstrap.css" rel="stylesheet">
+    <link href="./css/site.css" rel="stylesheet">
     <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.3.0/respond.min.js"></script>
@@ -19,9 +19,9 @@
     <div>
       <div class="jumbotron" id="rainyDayHeader">
         <h1>RainyDay.js</h1>
-        <br/>
+        <br>
         <p>Rendering raindrops with JavaScript</p>
-        <br/>
+        <br>
         <a class="btn btn-default btn-lg" href="https://github.com/mubaidr/rainyday.js#rainydayjs">Learn more</a>
       </div>
     </div>
@@ -47,15 +47,15 @@
         <div class="row">
           <div class="col-md-6">
             <div class="list-group">
-              <a href="./demo1.html" class="list-group-item">
+              <a class="list-group-item" href="./demo1.html">
                 <h4 class="list-group-item-heading">Demo 1</h4>
                 <p class="list-group-item-text">Example with custom rain engine parameters update example.</p>
               </a>
-              <a href="./demo2.html" class="list-group-item">
+              <a class="list-group-item" href="./demo2.html">
                 <h4 class="list-group-item-heading">Demo 2</h4>
                 <p class="list-group-item-text">Example with custom rain engine parameters.</p>
               </a>
-              <a href="./demo3.html" class="list-group-item">
+              <a class="list-group-item" href="./demo3.html">
                 <h4 class="list-group-item-heading">Demo 3</h4>
                 <p class="list-group-item-text">Another example with custom rain engine parameters.</p>
               </a>
@@ -63,15 +63,15 @@
           </div>
           <div class="col-md-6">
             <div class="list-group">
-              <a href="./demo4.html" class="list-group-item">
+              <a class="list-group-item" href="./demo4.html">
                 <h4 class="list-group-item-heading">Demo 4</h4>
                 <p class="list-group-item-text">Setting gravity and smudge for screen.</p>
               </a>
-              <a href="./demo5.html" class="list-group-item">
+              <a class="list-group-item" href="./demo5.html">
                 <h4 class="list-group-item-heading">Demo 5</h4>
                 <p class="list-group-item-text">Using portion of image (croping option)</p>
               </a>
-              <a href="./demo6.html" class="list-group-item">
+              <a class="list-group-item" href="./demo6.html">
                 <h4 class="list-group-item-heading">Demo 6</h4>
                 <p class="list-group-item-text">Using background image of a container</p>
               </a>
@@ -82,7 +82,7 @@
       <hr class="featurette-divider">
       <h2 id="options">Options</h2>
       RainyDay.js provides following options to configure the rain pattern and display behaviour.
-      <br/>
+      <br>
       <code>var rainyDay = new RainyDay(options)</code>
       <div>
         <table class="table table-striped table-hover ">
@@ -155,7 +155,7 @@
       <hr class="featurette-divider">
       <h2 id="methods">Methods</h2>
       RainyDay.js provides following methods to update the rain behaviour at runtime.
-      <br/>
+      <br>
       <code>var rainyDay = new RainyDay({image: '#myHeader'})</code>
       <div>
         <table class="table table-striped">
@@ -173,6 +173,24 @@
               <td colspan="1">
                 <code>
                   rainyDay.rain([ [3 //min drop size, 3//max drop size, 0.88//delay], [5, 5, 0.9], [6, 2, 1]]) //collection of engine presets
+                </code>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="1">pause</td>
+              <td colspan="3">Pause animation.</td>
+              <td colspan="1">
+                <code>
+                  rainyDay.pause()
+                </code>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="1">resume</td>
+              <td colspan="3">Resume animation.</td>
+              <td colspan="1">
+                <code>
+                  rainyDay.resume()
                 </code>
               </td>
             </tr>
