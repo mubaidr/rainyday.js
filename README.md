@@ -1,5 +1,7 @@
 # RainyDay.js
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/mubaidr/rainyday.js.svg)](https://greenkeeper.io/)
+
 [![npm version](https://badge.fury.io/js/rainyday.js.svg)](https://badge.fury.io/js/rainyday.js)
 
 A simple script for simulating raindrops falling on a glass surface.
